@@ -16,19 +16,19 @@ public class Constants {
     public static final float GROUND_WIDTH = 25f;
     public static final float GROUND_HEIGHT = 2f;
     public static final float GROUND_DENSITY = 0f;
-    public static final float RUNNER_X = 2;
-    public static final float RUNNER_Y = GROUND_Y + GROUND_HEIGHT;
-    public static final float RUNNER_WIDTH = 1f;
-    public static final float RUNNER_HEIGHT = 2f;
-    public static final float RUNNER_GRAVITY_SCALE = 3f;
-    public static final float RUNNER_DENSITY = 0.5f;
+    public static final float GIGAMAN_X = 2;
+    public static final float GIGAMAN_Y = GROUND_Y + GROUND_HEIGHT;
+    public static final float GIGAMAN_WIDTH = 1f;
+    public static final float GIGAMAN_HEIGHT = 2f;
+    public static final float GIGAMAN_GRAVITY_SCALE = 3f;
+    public static final float GIGAMAN_DENSITY = 0.5f;
     public static final float GIGAMAN_SHOOT_X = 2f;
     public static final float GIGAMAN_SHOOT_Y = 1.5f;
     public static final Vector2 RUNNER_JUMPING_LINEAR_IMPULSE = new Vector2(0, 13f);
     public static final float RUNNER_HIT_ANGULAR_IMPULSE = 10f;
 
     public static final float ENEMY_X = 25f;
-    public static final float ENEMY_DENSITY = RUNNER_DENSITY;
+    public static final float ENEMY_DENSITY = GIGAMAN_DENSITY;
     public static final float RUNNING_SHORT_ENEMY_Y = 1.5f;
     public static final float RUNNING_LONG_ENEMY_Y = 2f;
     public static final float FLYING_ENEMY_Y = 3f;
@@ -46,17 +46,15 @@ public class Constants {
     public static final String RUNNING_WIDE_ENEMY_ASSETS_ID = "running_wide_enemy";
     public static final String FLYING_SMALL_ENEMY_ASSETS_ID = "flying_small_enemy";
     public static final String FLYING_WIDE_ENEMY_ASSETS_ID = "flying_wide_enemy";
-    public static final String BULLET_ASSETS_ID = "bullet";
 
     public static final String BACKGROUND_IMAGE_PATH = "background.png";
     public static final String GROUND_IMAGE_PATH = "ground.png";
     public static final String SPRITES_ATLAS_PATH = "sprites.txt";
     public static final String GIGAMAN_ATLAS_PATH = "gigaman.pack.atlas";
     public static final String[] GIGAMAN_RUNNING_REGION_NAMES = new String[] {"walk-right-1", "walk-right-2","walk-right-3"};
-    public static final String RUNNER_DODGING_REGION_NAME = "walk-right-2";
+    public static final String RUNNER_DODGING_REGION_NAME = "walk-left-2";
     public static final String GIGAMAN_HIT_REGION_NAME = "standing-right";
     public static final String GIGAMAN_JUMPING_REGION_NAME = "jumping-right";
-    public static final String BULLET_REGION_NAME = "bullet";
 
     public static final String[] RUNNING_SMALL_ENEMY_REGION_NAMES = new String[] {"ladyBug_walk1", "ladyBug_walk2"};
     public static final String[] RUNNING_LONG_ENEMY_REGION_NAMES = new String[] {"barnacle_bite1", "barnacle_bite2"};
@@ -89,14 +87,9 @@ public class Constants {
 
     public static final String FONT_NAME = "roboto_bold.ttf";
 
-    public static final String ABOUT_TEXT = "Developed by: Son Nghiem\nPowered by: " +
-            "@libgdx\nGraphics: @kenneywings\nMusic: @kmacleod";
-    public static final String SHARE_MESSAGE_PREFIX = "Check out " + GAME_NAME + " %s";
-    public static final String SHARE_TITLE = "Share!";
+    public static final String ABOUT_TEXT = "Developed by: Son Nghiem\nPowered by: " + "@libgdx";
     public static final String PAUSED_LABEL = "Paused";
 
-    public static final float WORLD_SIZE = 480;
-    public static final float KILL_PLANE = -100;
     public static final String TEXTURE_ATLAS = "images/gigaman.pack.atlas";
     public static final float FOLLOW_CAM_MOVE_SPEED = 180;
     public static final String STANDING_RIGHT = "standing-right";
@@ -125,67 +118,5 @@ public class Constants {
     public static final float ENEMY_BOUNCE_AMPLITUDE = 4;
     public static final float ENEMY_BOUNCE_PERIOD = 2;
 
-    public static final float GIGAMAN_HEIGHT = 23;
-    public static final Vector2 REBOUND_VELOCITY = new Vector2(200, 200);
-    public static final float ENEMY_COLLISION_RADIUS = 15;
-    public static final String BULLET = "bullet";
-    public static final Vector2 BULLET_CENTER = new Vector2(3,2);
-    public static final float BULLET_MOVE_SPEED = 150;
-    public static final String BURST_LARGE = "explosion-large";
-    public static final String BURST_MEDIUM = "explosion-medium";
-    public static final String BURST_SMALL = "explosion-small";
-    public static final Vector2 BURST_CENTER = new Vector2(8, 8);
-    public static final float BURST_DURATION = 0.5f;
-    public static final String POWERUP = "powerup";
-    public static final Vector2 POWERUP_CENTER = new Vector2(7, 5);
-    public static final Vector2 CANNON_OFFSET = new Vector2(12, -7);
-    public static final int ENEMY_HEALTH = 5;
-    public static final float ENEMY_SHOT_RADIUS = 17;
-    public static final int INITIAL_BULLET = 10;
-    public static final int POWERUP_BULLET = 10;
-    public static final String LEVEL_DIR = "levels";
-    public static final String LEVEL_FILE_EXTENSION = "dt";
-    public static final String LEVEL_COMPOSITE = "composite";
-    public static final String LEVEL_9PATCHES = "sImage9patchs";
-    public static final String LEVEL_IMAGES = "sImages";
-    public static final String LEVEL_ERROR_MESSAGE = "There was a problem loading the level.";
-    public static final String LEVEL_IMAGENAME_KEY = "imageName";
-    public static final String LEVEL_X_KEY = "x";
-    public static final String LEVEL_Y_KEY = "y";
-    public static final String LEVEL_WIDTH_KEY = "width";
-    public static final String LEVEL_HEIGHT_KEY = "height";
-    public static final String LEVEL_IDENTIFIER_KEY = "itemIdentifier";
-    public static final String LEVEL_ENEMY_TAG = "Enemy";
-    public static final Vector2 EXIT_PORTAL_CENTER = new Vector2(31,31);
-    public static final String EXIT_PORTAL_SPRITE_1 = "exit-portal-1";
-    public static final String EXIT_PORTAL_SPRITE_2 = "exit-portal-2";
-    public static final String EXIT_PORTAL_SPRITE_3 = "exit-portal-3";
-    public static final String EXIT_PORTAL_SPRITE_4 = "exit-portal-4";
-    public static final String EXIT_PORTAL_SPRITE_5 = "exit-portal-5";
-    public static final String EXIT_PORTAL_SPRITE_6 = "exit-portal-6";
-    public static final float EXIT_PORTAL_FRAME_DURATION = 0.1f;
-    public static final Vector2 EXIT_PORTAL_DEFAULT_LOCATION = new Vector2(200, 200);
-    public static final int INITIAL_LIVES = 3;
-    public static final Vector2 DEFAULT_APPEAR_LOCATION = new Vector2(100, 100);
-    public static final float HUD_VIEWPORT_SIZE = 480;
-    public static final float HUD_MARGIN = 20;
-    public static final String HUD_BULLET_LABEL = "Bullet: ";
-    public static final String HUD_SCORE_LABEL = "Score: ";
-    public static final int ENEMY_KILL_SCORE = 100;
-    public static final int POWERUP_SCORE = 50;
-    public static final float EXIT_PORTAL_RADIUS = 28;
-    public static final String FONT_FILE = "font/header.fnt";
-    public static final int BURST_COUNT =500;
-    public static final float LEVEL_END_DURATION = 3;
-    public static final String WINNING_MESSAGE = "You are the Winner!";
-    public static final String GAME_OVER_MESSAGE = "Game Over!";
-    public static final String[] LEVELS = {"levels/Level1.dt", "levels/Level2.dt","levels/Level3.dt"};
-    public static final float ONSCREEN_CONTROLS_VIEWPORT_SIZE = 200;
-    public static final String MOVE_LEFT_BUTTON = "button-move-left";
-    public static final String MOVE_RIGHT_BUTTON = "button-move-right";
-    public static final String SHOOT_BUTTON = "button-shoot";
-    public static final String JUMP_BUTTON = "button-jump";
-    public static final String PAUSE = "Pause";
-    public static final Vector2 BUTTON_CENTER = new Vector2(15, 15);
-    public static final float BUTTON_RADIUS = 32;
+
 }

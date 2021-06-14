@@ -9,7 +9,6 @@ import vn.sonnl.gigaman.screens.GameplayScreen;
 
 public class GigaManGame extends Game {
 	private SpriteBatch batch;
-	private final AssetManager assetManager = new AssetManager();
 	public GigaManGame() {
 	}
 
@@ -32,8 +31,5 @@ public class GigaManGame extends Game {
 	@Override
 	public void dispose () {
 		batch.dispose();
-	}
-	public AssetManager getAssetManager() {
-		return assetManager;
 	}
 }

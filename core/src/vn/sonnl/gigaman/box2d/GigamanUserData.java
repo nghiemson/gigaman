@@ -7,14 +7,14 @@ import vn.sonnl.gigaman.helpers.Constants;
 
 public class GigamanUserData extends UserData {
 
-    private final Vector2 runningPosition = new Vector2(Constants.RUNNER_X, Constants.RUNNER_Y);
+    private final Vector2 runningPosition = new Vector2(Constants.GIGAMAN_X, Constants.GIGAMAN_Y);
     private final Vector2 dodgePosition = new Vector2(Constants.GIGAMAN_SHOOT_X, Constants.GIGAMAN_SHOOT_Y);
     private Vector2 jumpingLinearImpulse;
 
     public GigamanUserData(float width, float height) {
         super(width, height);
         jumpingLinearImpulse = Constants.RUNNER_JUMPING_LINEAR_IMPULSE;
-        userDataType = UserDataType.RUNNER;
+        userDataType = UserDataType.GIGAMAN;
     }
 
     public Vector2 getJumpingLinearImpulse() {

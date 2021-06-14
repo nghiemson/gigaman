@@ -153,7 +153,7 @@ standing-left
   index: -1
 standing-right
   rotate: false
-  xy: 165, 12
+  xy: 165, 13
   size: 31, 35
   orig: 31, 35
   offset: 0, 0
@@ -167,7 +167,7 @@ walk-left-1
   index: -1
 walk-left-2
   rotate: false
-  xy: 454, 8
+  xy: 454, 0
   size: 25, 35
   orig: 25, 35
   offset: 0, 0
@@ -181,21 +181,21 @@ walk-left-3
   index: -1
 walk-right-1
   rotate: false
-  xy: 263, 12
+  xy: 263, 13
   size: 30, 35
   orig: 30, 35
   offset: 0, 0
   index: -1
 walk-right-2
   rotate: false
-  xy: 295, 12
+  xy: 295, 13
   size: 30, 35
   orig: 30, 35
   offset: 0, 0
   index: -1
 walk-right-3
   rotate: false
-  xy: 198, 12
+  xy: 198, 13
   size: 31, 35
   orig: 31, 35
   offset: 0, 0

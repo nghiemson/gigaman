@@ -2,16 +2,9 @@ package vn.sonnl.gigaman;
 
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.OrthographicCamera;
-import com.badlogic.gdx.graphics.Texture;
-import com.badlogic.gdx.graphics.g2d.Sprite;
-import com.badlogic.gdx.graphics.g2d.SpriteBatch;
-import com.badlogic.gdx.math.MathUtils;
 import com.badlogic.gdx.math.Rectangle;
-import com.badlogic.gdx.math.Vector2;
 import com.badlogic.gdx.math.Vector3;
 import com.badlogic.gdx.physics.box2d.Body;
-import com.badlogic.gdx.physics.box2d.BodyDef;
-import com.badlogic.gdx.physics.box2d.CircleShape;
 import com.badlogic.gdx.physics.box2d.Contact;
 import com.badlogic.gdx.physics.box2d.ContactImpulse;
 import com.badlogic.gdx.physics.box2d.ContactListener;
@@ -19,15 +12,12 @@ import com.badlogic.gdx.physics.box2d.Manifold;
 import com.badlogic.gdx.physics.box2d.World;
 import com.badlogic.gdx.scenes.scene2d.Stage;
 import com.badlogic.gdx.utils.Array;
-import com.badlogic.gdx.utils.DelayedRemovalArray;
-import com.badlogic.gdx.utils.ObjectMap;
 import com.badlogic.gdx.utils.Scaling;
 import com.badlogic.gdx.utils.viewport.ScalingViewport;
 
 import vn.sonnl.gigaman.entities.AboutButton;
 import vn.sonnl.gigaman.entities.AboutLabel;
 import vn.sonnl.gigaman.entities.Background;
-import vn.sonnl.gigaman.entities.Bullet;
 import vn.sonnl.gigaman.entities.Enemy;
 import vn.sonnl.gigaman.entities.GameTitle;
 import vn.sonnl.gigaman.entities.GigaMan;
@@ -45,7 +35,7 @@ import vn.sonnl.gigaman.helpers.AudioUtils;
 import vn.sonnl.gigaman.helpers.BodyUtils;
 import vn.sonnl.gigaman.helpers.Constants;
 import vn.sonnl.gigaman.helpers.GameManager;
-import vn.sonnl.gigaman.helpers.WorldUtils;
+import vn.sonnl.gigaman.helpers.GameWorld;
 
 public class GameStage extends Stage implements ContactListener {
 
@@ -54,7 +44,7 @@ public class GameStage extends Stage implements ContactListener {
 
     private World world;
     private Ground ground;
-    private GigaMan gigaMan;
+    private GigaMan gigaman;
 
     private final float TIME_STEP = 1 / 300f;
     private float accumulator = 0f;
@@ -69,12 +59,9 @@ public class GameStage extends Stage implements ContactListener {
     private PauseButton pauseButton;
     private StartButton startButton;
     private AboutButton aboutButton;
-    private ObjectMap<Body, Sprite> sprites = new ObjectMap<>();
     private Score score;
     private float totalTimePassed;
     private boolean tutorialShown;
-    private DelayedRemovalArray<Enemy> enemies;
-    private DelayedRemovalArray<Bullet> bullets;
     private Vector3 touchPoint;
     private GigaManGame game;
 
@@ -89,8 +76,6 @@ public class GameStage extends Stage implements ContactListener {
         Gdx.input.setInputProcessor(this);
         AudioUtils.getInstance().init();
         onGameOver();
-        enemies = new DelayedRemovalArray<>();
-        bullets = new DelayedRemovalArray<>();
         game = new GigaManGame();
     }
 
@@ -182,7 +167,7 @@ public class GameStage extends Stage implements ContactListener {
 
 
     private void setUpWorld() {
-        world = WorldUtils.createWorld();
+        world = GameWorld.createWorld();
         world.setContactListener(this);
         setUpBackground();
         setUpGround();
@@ -193,7 +178,7 @@ public class GameStage extends Stage implements ContactListener {
     }
 
     private void setUpGround() {
-        ground = new Ground(WorldUtils.createGround(world));
+        ground = new Ground(GameWorld.createGround(world));
         addActor(ground);
     }
 
@@ -204,35 +189,15 @@ public class GameStage extends Stage implements ContactListener {
     }
 
     private void setUpGigaMan() {
-        if (gigaMan != null) {
-            gigaMan.remove();
+        if (gigaman != null) {
+            gigaman.remove();
         }
-        gigaMan = new GigaMan(WorldUtils.createRunner(world));
-        addActor(gigaMan);
+        gigaman = new GigaMan(GameWorld.createGigaMan(world));
+        addActor(gigaman);
     }
 
 
-    private  void createBullet(World world) {
-        CircleShape circleShape = new CircleShape();
-        circleShape.setRadius(0.5f);
-        BodyDef bd = new BodyDef();
-        bd.type = BodyDef.BodyType.DynamicBody;
-        Body bullet = world.createBody(bd);
-        bullet.setUserData("bullet");
-        bullet.createFixture(circleShape, 1);
-        bullet.setTransform(new Vector2(50,50), 0);
 
-        Sprite sprite = new Sprite(game.getAssetManager().get("bullet.png", Texture.class));
-        sprite.setOrigin(sprite.getWidth() / 2, sprite.getHeight() / 2);
-        sprites.put(bullet, sprite);
-
-        circleShape.dispose();
-
-        float velX = Math.abs((15  * (15 / 100f)));
-        float velY = Math.abs((15 * (15 / 100f)));
-
-        bullet.setLinearVelocity(velX, velY);
-    }
 
     private void setUpCamera() {
         camera = new OrthographicCamera(VIEWPORT_WIDTH, VIEWPORT_HEIGHT);
@@ -306,32 +271,11 @@ public class GameStage extends Stage implements ContactListener {
             world.step(TIME_STEP, 6, 2);
             accumulator -= TIME_STEP;
         }
-
-        // Update Bullets
-        bullets.begin();
-        for (Bullet bullet : bullets) {
-            bullet.update(delta);
-            if (!bullet.active) {
-                bullets.removeValue(bullet, false);
-            }
-        }
-        bullets.end();
-        // Update Enemies
-        enemies.begin();
-        for (int i = 0; i < enemies.size; i++) {
-            Enemy enemy = enemies.get(i);
-            enemy.act(delta);
-            if (enemy.health < 1) {
-                enemies.removeIndex(i);
-            }
-        }
-        enemies.end();
-
     }
 
     private void update(Body body) {
         if (!BodyUtils.bodyInBounds(body)) {
-            if (BodyUtils.bodyIsEnemy(body) && !gigaMan.isHit()) {
+            if (BodyUtils.bodyIsEnemy(body) && !gigaman.isHit()) {
                 createEnemy();
             }
             world.destroyBody(body);
@@ -339,11 +283,10 @@ public class GameStage extends Stage implements ContactListener {
     }
 
     private void createEnemy() {
-        Enemy enemy = new Enemy(WorldUtils.createEnemy(world));
+        Enemy enemy = new Enemy(GameWorld.createEnemy(world));
         enemy.getUserData().setLinearVelocity(
                 GameManager.getInstance().getDifficulty().getEnemyLinearVelocity());
         addActor(enemy);
-        enemies.add(enemy);
     }
 
     @Override
@@ -362,9 +305,9 @@ public class GameStage extends Stage implements ContactListener {
         }
 
         if (rightSideTouched(touchPoint.x, touchPoint.y)) {
-            gigaMan.jump();
+            gigaman.jump();
         } else if (leftSideTouched(touchPoint.x, touchPoint.y)) {
-            createBullet(world);
+            gigaman.dodge();
         }
 
         return super.touchDown(x, y, pointer, button);
@@ -377,8 +320,8 @@ public class GameStage extends Stage implements ContactListener {
             return super.touchUp(screenX, screenY, pointer, button);
         }
 
-        if (gigaMan.isDodging()) {
-            gigaMan.stopDodge();
+        if (gigaman.isDodging()) {
+            gigaman.stopDodge();
         }
 
         return super.touchUp(screenX, screenY, pointer, button);
@@ -428,14 +371,14 @@ public class GameStage extends Stage implements ContactListener {
 
         if ((BodyUtils.bodyIsRunner(a) && BodyUtils.bodyIsEnemy(b)) ||
                 (BodyUtils.bodyIsEnemy(a) && BodyUtils.bodyIsRunner(b))) {
-            if (gigaMan.isHit()) {
+            if (gigaman.isHit()) {
                 return;
             }
-            gigaMan.hit();
+            gigaman.hit();
             onGameOver();
         } else if ((BodyUtils.bodyIsRunner(a) && BodyUtils.bodyIsGround(b)) ||
                 (BodyUtils.bodyIsGround(a) && BodyUtils.bodyIsRunner(b))) {
-            gigaMan.landed();
+            gigaman.landed();
         }
 
     }
@@ -454,7 +397,7 @@ public class GameStage extends Stage implements ContactListener {
             String difficultyName = "DIFFICULTY_" + nextDifficulty;
             GameManager.getInstance().setDifficulty(Difficulty.valueOf(difficultyName));
 
-            gigaMan.onDifficultyChange(GameManager.getInstance().getDifficulty());
+            gigaman.onDifficultyChange(GameManager.getInstance().getDifficulty());
             score.setMultiplier(GameManager.getInstance().getDifficulty().getScoreMultiplier());
 
         }
@@ -522,10 +465,6 @@ public class GameStage extends Stage implements ContactListener {
 
     }
 
-
-
-
-
     private void onGamePaused() {
         GameManager.getInstance().setGameState(GameState.PAUSED);
     }
@@ -553,8 +492,5 @@ public class GameStage extends Stage implements ContactListener {
     @Override
     public OrthographicCamera getCamera() {
         return camera;
-    }
-    public DelayedRemovalArray<Enemy> getEnemies() {
-        return enemies;
     }
 }
