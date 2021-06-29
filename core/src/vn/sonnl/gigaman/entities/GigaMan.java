@@ -7,7 +7,7 @@ import com.badlogic.gdx.graphics.g2d.Batch;
 import com.badlogic.gdx.graphics.g2d.TextureRegion;
 import com.badlogic.gdx.physics.box2d.Body;
 
-import vn.sonnl.gigaman.box2d.GigamanUserData;
+import vn.sonnl.gigaman.box2d.GigamanData;
 import vn.sonnl.gigaman.enums.Difficulty;
 import vn.sonnl.gigaman.enums.GameState;
 import vn.sonnl.gigaman.helpers.Assets;
@@ -38,7 +38,7 @@ public class GigaMan extends GameActor{
         runningAnimation = Assets.getAnimation(Constants.GIGAMAN_RUNNING_ASSETS_ID);
         stateTime = 0f;
         jumpingTexture = Assets.getTextureRegion(Constants.GIGAMAN_JUMPING_ASSETS_ID);
-        dodgingTexture = Assets.getTextureRegion(Constants.RUNNER_DODGING_ASSETS_ID);
+        dodgingTexture = Assets.getTextureRegion(Constants.GIGAMAN_DODGING_ASSETS_ID);
         hitTexture = Assets.getTextureRegion(Constants.GIGAMAN_HIT_ASSETS_ID);
         jumpSound = AudioUtils.getInstance().getJumpSound();
         hitSound = AudioUtils.getInstance().getHitSound();
@@ -70,8 +70,8 @@ public class GigaMan extends GameActor{
     }
 
     @Override
-    public GigamanUserData getUserData() {
-        return (GigamanUserData) userData;
+    public GigamanData getUserData() {
+        return (GigamanData) data;
     }
 
     public void jump() {
@@ -98,7 +98,7 @@ public class GigaMan extends GameActor{
 
     public void stopDodge() {
         dodging = false;
-        // If the runner is hit don't force him back to the running position
+        // If the gigaman is hit don't force him back to the running position
         if (!hit) {
             body.setTransform(getUserData().getRunningPosition(), 0f);
         }
@@ -119,8 +119,8 @@ public class GigaMan extends GameActor{
     }
 
     public void onDifficultyChange(Difficulty newDifficulty) {
-        setGravityScale(newDifficulty.getRunnerGravityScale());
-        getUserData().setJumpingLinearImpulse(newDifficulty.getRunnerJumpingLinearImpulse());
+        setGravityScale(newDifficulty.getGigamanGravityScale());
+        getUserData().setJumpingLinearImpulse(newDifficulty.getGigamanJumpingLinearImpulse());
     }
 
     public void setGravityScale(float gravityScale) {

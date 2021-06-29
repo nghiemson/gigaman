@@ -24,8 +24,8 @@ public class Constants {
     public static final float GIGAMAN_DENSITY = 0.5f;
     public static final float GIGAMAN_SHOOT_X = 2f;
     public static final float GIGAMAN_SHOOT_Y = 1.5f;
-    public static final Vector2 RUNNER_JUMPING_LINEAR_IMPULSE = new Vector2(0, 13f);
-    public static final float RUNNER_HIT_ANGULAR_IMPULSE = 10f;
+    public static final Vector2 GIGAMAN_JUMPING_LINEAR_IMPULSE = new Vector2(0, 13f);
+    public static final float GIGAMAN_HIT_ANGULAR_IMPULSE = 10f;
 
     public static final float ENEMY_X = 25f;
     public static final float ENEMY_DENSITY = GIGAMAN_DENSITY;
@@ -36,8 +36,8 @@ public class Constants {
 
     public static final String BACKGROUND_ASSETS_ID = "background";
     public static final String GROUND_ASSETS_ID = "ground";
-    public static final String GIGAMAN_RUNNING_ASSETS_ID = "runner_running";
-    public static final String RUNNER_DODGING_ASSETS_ID = "runner_dodging";
+    public static final String GIGAMAN_RUNNING_ASSETS_ID = "gigaman_running";
+    public static final String GIGAMAN_DODGING_ASSETS_ID = "gigaman_dodging";
     public static final String GIGAMAN_HIT_ASSETS_ID = "gigaman_hit";
     public static final String GIGAMAN_JUMPING_ASSETS_ID = "gigaman_jumping";
     public static final String RUNNING_SMALL_ENEMY_ASSETS_ID = "running_small_enemy";
@@ -52,7 +52,7 @@ public class Constants {
     public static final String SPRITES_ATLAS_PATH = "sprites.txt";
     public static final String GIGAMAN_ATLAS_PATH = "gigaman.pack.atlas";
     public static final String[] GIGAMAN_RUNNING_REGION_NAMES = new String[] {"walk-right-1", "walk-right-2","walk-right-3"};
-    public static final String RUNNER_DODGING_REGION_NAME = "walk-left-2";
+    public static final String GIGAMAN_DODGING_REGION_NAME = "walk-left-2";
     public static final String GIGAMAN_HIT_REGION_NAME = "standing-right";
     public static final String GIGAMAN_JUMPING_REGION_NAME = "jumping-right";
 
@@ -81,8 +81,8 @@ public class Constants {
     public static final String TUTORIAL_LEFT_TEXT = "\nTap left to dodge";
     public static final String TUTORIAL_RIGHT_TEXT = "\nTap right to jump";
 
-    public static final String RUNNER_JUMPING_SOUND = "jump.wav";
-    public static final String RUNNER_HIT_SOUND = "hit.wav";
+    public static final String GIGAMAN_JUMPING_SOUND = "jump.wav";
+    public static final String GIGAMAN_HIT_SOUND = "hit.wav";
     public static final String GAME_MUSIC = "fun_in_a_bottle.mp3";
 
     public static final String FONT_NAME = "roboto_bold.ttf";

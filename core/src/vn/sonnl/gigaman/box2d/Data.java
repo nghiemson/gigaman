@@ -1,24 +1,24 @@
 package vn.sonnl.gigaman.box2d;
 
-import vn.sonnl.gigaman.enums.UserDataType;
+import vn.sonnl.gigaman.enums.DataType;
 
-public class UserData {
+public class Data {
 
-    protected UserDataType userDataType;
+    protected DataType dataType;
     protected float width;
     protected float height;
 
-    public UserData() {
+    public Data() {
 
     }
 
-    public UserData(float width, float height) {
+    public Data(float width, float height) {
         this.width = width;
         this.height = height;
     }
 
-    public UserDataType getUserDataType() {
-        return userDataType;
+    public DataType getUserDataType() {
+        return dataType;
     }
 
     public float getWidth() {

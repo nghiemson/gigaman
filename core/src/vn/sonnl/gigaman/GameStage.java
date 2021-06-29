@@ -63,7 +63,7 @@ public class GameStage extends Stage implements ContactListener {
     private float totalTimePassed;
     private boolean tutorialShown;
     private Vector3 touchPoint;
-    private GigaManGame game;
+    private GigamanGame game;
 
     public GameStage() {
         super(new ScalingViewport(Scaling.stretch, VIEWPORT_WIDTH, VIEWPORT_HEIGHT,
@@ -76,7 +76,7 @@ public class GameStage extends Stage implements ContactListener {
         Gdx.input.setInputProcessor(this);
         AudioUtils.getInstance().init();
         onGameOver();
-        game = new GigaManGame();
+        game = new GigamanGame();
     }
 
     private void setUpStageBase() {
@@ -369,15 +369,15 @@ public class GameStage extends Stage implements ContactListener {
         Body a = contact.getFixtureA().getBody();
         Body b = contact.getFixtureB().getBody();
 
-        if ((BodyUtils.bodyIsRunner(a) && BodyUtils.bodyIsEnemy(b)) ||
-                (BodyUtils.bodyIsEnemy(a) && BodyUtils.bodyIsRunner(b))) {
+        if ((BodyUtils.bodyIsGigaman(a) && BodyUtils.bodyIsEnemy(b)) ||
+                (BodyUtils.bodyIsEnemy(a) && BodyUtils.bodyIsGigaman(b))) {
             if (gigaman.isHit()) {
                 return;
             }
             gigaman.hit();
             onGameOver();
-        } else if ((BodyUtils.bodyIsRunner(a) && BodyUtils.bodyIsGround(b)) ||
-                (BodyUtils.bodyIsGround(a) && BodyUtils.bodyIsRunner(b))) {
+        } else if ((BodyUtils.bodyIsGigaman(a) && BodyUtils.bodyIsGround(b)) ||
+                (BodyUtils.bodyIsGround(a) && BodyUtils.bodyIsGigaman(b))) {
             gigaman.landed();
         }
 

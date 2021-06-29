@@ -2,19 +2,19 @@ package vn.sonnl.gigaman.box2d;
 
 import com.badlogic.gdx.math.Vector2;
 
-import vn.sonnl.gigaman.enums.UserDataType;
+import vn.sonnl.gigaman.enums.DataType;
 import vn.sonnl.gigaman.helpers.Constants;
 
-public class GigamanUserData extends UserData {
+public class GigamanData extends Data {
 
     private final Vector2 runningPosition = new Vector2(Constants.GIGAMAN_X, Constants.GIGAMAN_Y);
     private final Vector2 dodgePosition = new Vector2(Constants.GIGAMAN_SHOOT_X, Constants.GIGAMAN_SHOOT_Y);
     private Vector2 jumpingLinearImpulse;
 
-    public GigamanUserData(float width, float height) {
+    public GigamanData(float width, float height) {
         super(width, height);
-        jumpingLinearImpulse = Constants.RUNNER_JUMPING_LINEAR_IMPULSE;
-        userDataType = UserDataType.GIGAMAN;
+        jumpingLinearImpulse = Constants.GIGAMAN_JUMPING_LINEAR_IMPULSE;
+        dataType = DataType.GIGAMAN;
     }
 
     public Vector2 getJumpingLinearImpulse() {
@@ -39,7 +39,7 @@ public class GigamanUserData extends UserData {
     }
 
     public float getHitAngularImpulse() {
-        return Constants.RUNNER_HIT_ANGULAR_IMPULSE;
+        return Constants.GIGAMAN_HIT_ANGULAR_IMPULSE;
     }
 
 }

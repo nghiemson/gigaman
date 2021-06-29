@@ -44,8 +44,8 @@ public class Assets {
         // GigaMan
         texturesMap.put(Constants.GIGAMAN_JUMPING_ASSETS_ID,
                 textureAtlas2.findRegion(Constants.GIGAMAN_JUMPING_REGION_NAME));
-        texturesMap.put(Constants.RUNNER_DODGING_ASSETS_ID,
-                textureAtlas2.findRegion(Constants.RUNNER_DODGING_REGION_NAME));
+        texturesMap.put(Constants.GIGAMAN_DODGING_ASSETS_ID,
+                textureAtlas2.findRegion(Constants.GIGAMAN_DODGING_REGION_NAME));
         texturesMap.put(Constants.GIGAMAN_HIT_ASSETS_ID,
                 textureAtlas2.findRegion(Constants.GIGAMAN_HIT_REGION_NAME));
         animationsMap.put(Constants.GIGAMAN_RUNNING_ASSETS_ID, createAnimation(textureAtlas2,

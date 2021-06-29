@@ -5,7 +5,7 @@ import com.badlogic.gdx.math.Vector2;
 import vn.sonnl.gigaman.helpers.Constants;
 
 public enum  Difficulty {
-    DIFFICULTY_1(1,Constants.ENEMY_LINEAR_VELOCITY, Constants.GIGAMAN_GRAVITY_SCALE, Constants.RUNNER_JUMPING_LINEAR_IMPULSE, 5),
+    DIFFICULTY_1(1,Constants.ENEMY_LINEAR_VELOCITY, Constants.GIGAMAN_GRAVITY_SCALE, Constants.GIGAMAN_JUMPING_LINEAR_IMPULSE, 5),
     DIFFICULTY_2(2, new Vector2(-12f, 0f), Constants.GIGAMAN_GRAVITY_SCALE * 1.1f, new Vector2(0, 13f), 10),
     DIFFICULTY_3(3, new Vector2(-14f, 0f), Constants.GIGAMAN_GRAVITY_SCALE * 1.1f, new Vector2(0, 13f), 20),
     DIFFICULTY_4(4, new Vector2(-16f, 0f), Constants.GIGAMAN_GRAVITY_SCALE * 1.1f, new Vector2(0, 13f), 40),
@@ -21,16 +21,16 @@ public enum  Difficulty {
 
     private int level;
     private Vector2 enemyLinearVelocity;
-    private float runnerGravityScale;
-    private Vector2 runnerJumpingLinearImpulse;
+    private float gigamanGravityScale;
+    private Vector2 gigamanJumpingLinearImpulse;
     private int scoreMultiplier;
 
-    Difficulty(int level, Vector2 obstacleLinearVelocity, float runnerGravityScale, Vector2 runnerJumpingLinearImpulse,
+    Difficulty(int level, Vector2 obstacleLinearVelocity, float gigamanGravityScale, Vector2 gigamanJumpingLinearImpulse,
                int scoreMultiplier) {
         this.level = level;
         this.enemyLinearVelocity = obstacleLinearVelocity;
-        this.runnerGravityScale = runnerGravityScale;
-        this.runnerJumpingLinearImpulse = runnerJumpingLinearImpulse;
+        this.gigamanGravityScale = gigamanGravityScale;
+        this.gigamanJumpingLinearImpulse = gigamanJumpingLinearImpulse;
         this.scoreMultiplier = scoreMultiplier;
     }
 
@@ -42,12 +42,12 @@ public enum  Difficulty {
         return enemyLinearVelocity;
     }
 
-    public float getRunnerGravityScale() {
-        return runnerGravityScale;
+    public float getGigamanGravityScale() {
+        return gigamanGravityScale;
     }
 
-    public Vector2 getRunnerJumpingLinearImpulse() {
-        return runnerJumpingLinearImpulse;
+    public Vector2 getGigamanJumpingLinearImpulse() {
+        return gigamanJumpingLinearImpulse;
     }
 
     public int getScoreMultiplier() {

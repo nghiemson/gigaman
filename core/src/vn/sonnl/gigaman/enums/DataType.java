@@ -1,6 +1,6 @@
 package vn.sonnl.gigaman.enums;
 
-public enum UserDataType {
+public enum DataType {
     GROUND,
     GIGAMAN,
     ENEMY

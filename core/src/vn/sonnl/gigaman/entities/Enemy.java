@@ -6,7 +6,7 @@ import com.badlogic.gdx.graphics.g2d.Batch;
 import com.badlogic.gdx.graphics.g2d.TextureRegion;
 import com.badlogic.gdx.physics.box2d.Body;
 
-import vn.sonnl.gigaman.box2d.EnemyUserData;
+import vn.sonnl.gigaman.box2d.EnemyData;
 import vn.sonnl.gigaman.enums.GameState;
 import vn.sonnl.gigaman.helpers.Assets;
 import vn.sonnl.gigaman.helpers.GameManager;
@@ -23,8 +23,8 @@ public class Enemy extends GameActor{
     }
 
     @Override
-    public EnemyUserData getUserData() {
-        return (EnemyUserData) userData;
+    public EnemyData getUserData() {
+        return (EnemyData) data;
     }
 
     @Override

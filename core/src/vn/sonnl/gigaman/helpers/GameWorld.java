@@ -5,9 +5,9 @@ import com.badlogic.gdx.physics.box2d.Body;
 import com.badlogic.gdx.physics.box2d.BodyDef;
 import com.badlogic.gdx.physics.box2d.PolygonShape;
 import com.badlogic.gdx.physics.box2d.World;
-import vn.sonnl.gigaman.box2d.EnemyUserData;
-import vn.sonnl.gigaman.box2d.GigamanUserData;
-import vn.sonnl.gigaman.box2d.GroundUserData;
+import vn.sonnl.gigaman.box2d.EnemyData;
+import vn.sonnl.gigaman.box2d.GigamanData;
+import vn.sonnl.gigaman.box2d.GroundData;
 import vn.sonnl.gigaman.enums.EnemyType;
 
 public class GameWorld {
@@ -22,7 +22,7 @@ public class GameWorld {
         PolygonShape shape = new PolygonShape();
         shape.setAsBox(Constants.GROUND_WIDTH / 2, Constants.GROUND_HEIGHT / 2);
         body.createFixture(shape, Constants.GROUND_DENSITY);
-        body.setUserData(new GroundUserData(Constants.GROUND_WIDTH, Constants.GROUND_HEIGHT));
+        body.setUserData(new GroundData(Constants.GROUND_WIDTH, Constants.GROUND_HEIGHT));
         shape.dispose();
         return body;
     }
@@ -37,7 +37,7 @@ public class GameWorld {
         body.setGravityScale(Constants.GIGAMAN_GRAVITY_SCALE);
         body.createFixture(shape, Constants.GIGAMAN_DENSITY);
         body.resetMassData();
-        body.setUserData(new GigamanUserData(Constants.GIGAMAN_WIDTH, Constants.GIGAMAN_HEIGHT));
+        body.setUserData(new GigamanData(Constants.GIGAMAN_WIDTH, Constants.GIGAMAN_HEIGHT));
         shape.dispose();
         return body;
     }
@@ -52,7 +52,7 @@ public class GameWorld {
         Body body = world.createBody(bodyDef);
         body.createFixture(shape, enemyType.getDensity());
         body.resetMassData();
-        EnemyUserData userData = new EnemyUserData(enemyType.getWidth(), enemyType.getHeight(),
+        EnemyData userData = new EnemyData(enemyType.getWidth(), enemyType.getHeight(),
                 enemyType.getAnimationAssetId());
         body.setUserData(userData);
         shape.dispose();

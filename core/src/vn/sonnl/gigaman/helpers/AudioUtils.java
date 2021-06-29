@@ -33,8 +33,8 @@ public class AudioUtils {
         music = Gdx.audio.newMusic(Gdx.files.internal(Constants.GAME_MUSIC));
         music.setLooping(true);
         playMusic();
-        jumpSound = createSound(Constants.RUNNER_JUMPING_SOUND);
-        hitSound = createSound(Constants.RUNNER_HIT_SOUND);
+        jumpSound = createSound(Constants.GIGAMAN_JUMPING_SOUND);
+        hitSound = createSound(Constants.GIGAMAN_HIT_SOUND);
     }
 
     public Sound createSound(String soundFileName) {

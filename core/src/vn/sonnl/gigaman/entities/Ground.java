@@ -5,7 +5,7 @@ import com.badlogic.gdx.graphics.g2d.TextureRegion;
 import com.badlogic.gdx.math.Rectangle;
 import com.badlogic.gdx.physics.box2d.Body;
 
-import vn.sonnl.gigaman.box2d.GroundUserData;
+import vn.sonnl.gigaman.box2d.GroundData;
 import vn.sonnl.gigaman.enums.GameState;
 import vn.sonnl.gigaman.helpers.Assets;
 import vn.sonnl.gigaman.helpers.Constants;
@@ -28,8 +28,8 @@ public class Ground extends GameActor {
     }
 
     @Override
-    public GroundUserData getUserData() {
-        return (GroundUserData) userData;
+    public GroundData getUserData() {
+        return (GroundData) data;
     }
 
     @Override

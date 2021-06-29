@@ -2,37 +2,37 @@ package vn.sonnl.gigaman.helpers;
 
 import com.badlogic.gdx.physics.box2d.Body;
 
-import vn.sonnl.gigaman.box2d.UserData;
-import vn.sonnl.gigaman.enums.UserDataType;
+import vn.sonnl.gigaman.box2d.Data;
+import vn.sonnl.gigaman.enums.DataType;
 
 public class BodyUtils {
     public static boolean bodyInBounds(Body body) {
-        UserData userData = (UserData) body.getUserData();
+        Data data = (Data) body.getUserData();
 
-        switch (userData.getUserDataType()) {
+        switch (data.getUserDataType()) {
             case GIGAMAN:
             case ENEMY:
-                return body.getPosition().x + userData.getWidth() / 2 > 0;
+                return body.getPosition().x + data.getWidth() / 2 > 0;
         }
 
         return true;
     }
 
     public static boolean bodyIsEnemy(Body body) {
-        UserData userData = (UserData) body.getUserData();
+        Data data = (Data) body.getUserData();
 
-        return userData != null && userData.getUserDataType() == UserDataType.ENEMY;
+        return data != null && data.getUserDataType() == DataType.ENEMY;
     }
 
-    public static boolean bodyIsRunner(Body body) {
-        UserData userData = (UserData) body.getUserData();
+    public static boolean bodyIsGigaman(Body body) {
+        Data data = (Data) body.getUserData();
 
-        return userData != null && userData.getUserDataType() == UserDataType.GIGAMAN;
+        return data != null && data.getUserDataType() == DataType.GIGAMAN;
     }
 
     public static boolean bodyIsGround(Body body) {
-        UserData userData = (UserData) body.getUserData();
+        Data data = (Data) body.getUserData();
 
-        return userData != null && userData.getUserDataType() == UserDataType.GROUND;
+        return data != null && data.getUserDataType() == DataType.GROUND;
     }
 }
