@@ -9,7 +9,7 @@ import vn.sonnl.gigaman.helpers.GameManager;
 public class AboutButton extends GameButton {
 
     public interface AboutButtonListener {
-        public void onAbout();
+         void onAbout();
     }
 
     private AboutButtonListener listener;

@@ -1,38 +1,38 @@
 package vn.sonnl.gigaman.helpers;
 
-public interface GameEventListener {
+ public interface GameEventListener {
 
     /**
      * Displays an ad
      */
-    public void displayAd();
+     void displayAd();
 
     /**
      * Hides an ad
      */
-    public void hideAd();
+     void hideAd();
 
     /**
      * Submits a given score. Used every time the game is over
      *
      * @param score
      */
-    public void submitScore(int score);
+     void submitScore(int score);
 
     /**
      * Displays the scores leaderboard
      */
-    public void displayLeaderboard();
+     void displayLeaderboard();
 
     /**
      * Displays the game's achievements
      */
-    public void displayAchievements();
+     void displayAchievements();
 
     /**
      * Shares the game's website
      */
-    public void share();
+     void share();
 
     /**
      * Unlocks an achievement with the given ID
@@ -40,7 +40,7 @@ public interface GameEventListener {
      * @param id achievement ID
      * @see <a href="https://developers.google.com/games/services/">Google Play Game Services</a>
      */
-    public void unlockAchievement(String id);
+     void unlockAchievement(String id);
 
     /**
      * Increments an achievement with the given ID
@@ -49,7 +49,7 @@ public interface GameEventListener {
      * @param steps incremental steps
      * @see <a href="https://developers.google.com/games/services/">Google Play Game Services</a>
      */
-    public void incrementAchievement(String id, int steps);
+     void incrementAchievement(String id, int steps);
 
     /**
      * The following are getters for specific achievement IDs used in this game
@@ -58,56 +58,56 @@ public interface GameEventListener {
     /**
      * @return "Getting Started" achievement ID
      */
-    public String getGettingStartedAchievementId();
+     String getGettingStartedAchievementId();
 
     /**
      * @return "Like a Rover" achievement ID
      */
-    public String getLikeARoverAchievementId();
+     String getLikeARoverAchievementId();
 
     /**
      * @return "Spirit" achievement ID
      */
-    public String getSpiritAchievementId();
+     String getSpiritAchievementId();
 
     /**
      * @return "Curiosity" achievement ID
      */
-    public String getCuriosityAchievementId();
+     String getCuriosityAchievementId();
 
     /**
      * @return "5k Club" achievement ID
      */
-    public String get5kClubAchievementId();
+     String get5kClubAchievementId();
 
     /**
      * @return "10k Club" achievement ID
      */
-    public String get10kClubAchievementId();
+     String get10kClubAchievementId();
 
     /**
      * @return "25k Club" achievement ID
      */
-    public String get25kClubAchievementId();
+     String get25kClubAchievementId();
 
     /**
      * @return "50k Club" achievement ID
      */
-    public String get50kClubAchievementId();
+     String get50kClubAchievementId();
 
     /**
      * @return "10 Jump Street" achievement ID
      */
-    public String get10JumpStreetAchievementId();
+     String get10JumpStreetAchievementId();
 
     /**
      * @return "100 Jump Street" achievement ID
      */
-    public String get100JumpStreetAchievementId();
+     String get100JumpStreetAchievementId();
 
     /**
      * @return "500 Jump Street" achievement ID
      */
-    public String get500JumpStreetAchievementId();
+     String get500JumpStreetAchievementId();
 
 }

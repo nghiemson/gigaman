@@ -17,11 +17,13 @@ import com.badlogic.gdx.utils.viewport.ScalingViewport;
 
 import vn.sonnl.gigaman.entities.AboutButton;
 import vn.sonnl.gigaman.entities.AboutLabel;
+import vn.sonnl.gigaman.entities.AchievementsButton;
 import vn.sonnl.gigaman.entities.Background;
 import vn.sonnl.gigaman.entities.Enemy;
 import vn.sonnl.gigaman.entities.GameTitle;
 import vn.sonnl.gigaman.entities.GigaMan;
 import vn.sonnl.gigaman.entities.Ground;
+import vn.sonnl.gigaman.entities.LeaderboardButton;
 import vn.sonnl.gigaman.entities.MusicButton;
 import vn.sonnl.gigaman.entities.PauseButton;
 import vn.sonnl.gigaman.entities.PausedLabel;
@@ -41,29 +43,25 @@ public class GameStage extends Stage implements ContactListener {
 
     private static final int VIEWPORT_WIDTH = Constants.APP_WIDTH;
     private static final int VIEWPORT_HEIGHT = Constants.APP_HEIGHT;
-
     private World world;
     private Ground ground;
     private GigaMan gigaman;
-
     private final float TIME_STEP = 1 / 300f;
     private float accumulator = 0f;
-
     private OrthographicCamera camera;
-
     private Rectangle screenLeftSide;
     private Rectangle screenRightSide;
-
     private SoundButton soundButton;
     private MusicButton musicButton;
     private PauseButton pauseButton;
     private StartButton startButton;
     private AboutButton aboutButton;
+    private AchievementsButton achievementsButton;
+    private LeaderboardButton leaderboardButton;
     private Score score;
     private float totalTimePassed;
     private boolean tutorialShown;
     private Vector3 touchPoint;
-    private GigamanGame game;
 
     public GameStage() {
         super(new ScalingViewport(Scaling.stretch, VIEWPORT_WIDTH, VIEWPORT_HEIGHT,
@@ -76,7 +74,6 @@ public class GameStage extends Stage implements ContactListener {
         Gdx.input.setInputProcessor(this);
         AudioUtils.getInstance().init();
         onGameOver();
-        game = new GigamanGame();
     }
 
     private void setUpStageBase() {
@@ -143,11 +140,22 @@ public class GameStage extends Stage implements ContactListener {
     private void setUpMainMenu() {
         setUpStart();
         setUpAbout();
+        setUpLeaderboard();
+        setUpAchievements();
+    }
+
+    private void setUpAchievements() {
+        Rectangle achievementsButtonBounds = new Rectangle(getCamera().viewportWidth * 23 / 25,
+                getCamera().viewportHeight / 2, getCamera().viewportHeight / 10,
+                getCamera().viewportHeight / 10);
+        achievementsButton = new AchievementsButton(achievementsButtonBounds,
+                new GameAchievementsButtonListener());
+        addActor(achievementsButton);
     }
 
     private void setUpStart() {
-        Rectangle startButtonBounds = new Rectangle(getCamera().viewportWidth / 2 - 100,
-                getCamera().viewportHeight / 2 - 100, getCamera().viewportWidth / 4,
+        Rectangle startButtonBounds = new Rectangle(getCamera().viewportWidth * 3 / 16,
+                getCamera().viewportHeight / 4, getCamera().viewportWidth / 4,
                 getCamera().viewportWidth / 4);
         startButton = new StartButton(startButtonBounds, new GameStartButtonListener());
         addActor(startButton);
@@ -163,7 +171,14 @@ public class GameStage extends Stage implements ContactListener {
         addActor(aboutButton);
     }
 
-
+    private void setUpLeaderboard() {
+        Rectangle leaderboardButtonBounds = new Rectangle(getCamera().viewportWidth * 9 / 16,
+                getCamera().viewportHeight / 4, getCamera().viewportWidth / 4,
+                getCamera().viewportWidth / 4);
+        leaderboardButton = new LeaderboardButton(leaderboardButtonBounds,
+                new GameLeaderboardButtonListener());
+        addActor(leaderboardButton);
+    }
 
 
     private void setUpWorld() {
@@ -333,7 +348,8 @@ public class GameStage extends Stage implements ContactListener {
         switch (GameManager.getInstance().getGameState()) {
             case OVER:
                 touched = startButton.getBounds().contains(x, y)
-                        || aboutButton.getBounds().contains(x, y);
+                        || aboutButton.getBounds().contains(x, y)
+                        || leaderboardButton.getBounds().contains(x,y);
                 break;
             case RUNNING:
             case PAUSED:
@@ -375,11 +391,20 @@ public class GameStage extends Stage implements ContactListener {
                 return;
             }
             gigaman.hit();
+            displayAd();
+            GameManager.getInstance().submitScore(score.getScore());
             onGameOver();
+            GameManager.getInstance().addGamePlayed();
+            GameManager.getInstance().addJumpCount(gigaman.getJumpCount());
         } else if ((BodyUtils.bodyIsGigaman(a) && BodyUtils.bodyIsGround(b)) ||
                 (BodyUtils.bodyIsGround(a) && BodyUtils.bodyIsGigaman(b))) {
             gigaman.landed();
         }
+
+    }
+
+    private void displayAd() {
+        GameManager.getInstance().displayAd();
 
     }
 
@@ -492,5 +517,25 @@ public class GameStage extends Stage implements ContactListener {
     @Override
     public OrthographicCamera getCamera() {
         return camera;
+    }
+
+    private class GameLeaderboardButtonListener
+            implements LeaderboardButton.LeaderboardButtonListener {
+
+        @Override
+        public void onLeaderboard() {
+            GameManager.getInstance().displayLeaderboard();
+        }
+
+    }
+
+    private class GameAchievementsButtonListener
+            implements AchievementsButton.AchievementsButtonListener {
+
+        @Override
+        public void onAchievements() {
+            GameManager.getInstance().displayAchievements();
+        }
+
     }
 }

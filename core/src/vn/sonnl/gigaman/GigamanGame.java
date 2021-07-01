@@ -28,10 +28,6 @@ public class GigamanGame extends Game {
 		super.render();
 	}
 
-	public SpriteBatch getBatch(){
-		return this.batch;
-	}
-
 	@Override
 	public void dispose () {
 		super.dispose();
