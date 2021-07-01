@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="app_name">Gigaman</string>
+    <string name="app_id" translatable="false">487439784154</string>
+
+    <string name="gamehelper_sign_in_failed">Failed to sign in. Please check your network connection and try again.</string>
+    <string name="gamehelper_app_misconfigured">The application is incorrectly configured. Check that the package name and signing certificate match the client ID created in Developer Console. Also, if the application is not yet published, check that the account you are trying to sign in with is listed as a tester account. See logs for more information.</string>
+    <string name="gamehelper_license_failed">License check failed.</string>
+    <string name="gamehelper_unknown_error">Unknown error.</string>
+
+    <string name="achievement_getting_started">Get Started</string>
+    <string name="achievement_like_a_rover">Like a Rover</string>
+    <string name="achievement_spirit">Spirit</string>
+    <string name="achievement_curiosity">Curiosity</string>
+    <string name="achievement_5k_club">5000 Points</string>
+    <string name="achievement_10k_club">10000 Points</string>
+    <string name="achievement_25k_club">25000 Points</string>
+    <string name="achievement_50k_club">50000 Points</string>
+    <string name="achievement_10_jump_street">10x Jump</string>
+    <string name="achievement_100_jump_street">100x Jump</string>
+    <string name="achievement_500_jump_street">500x Jump</string>
+    <string name="leaderboard_high_scores">High Scores</string>
+    <string name="admob_id" >ca-app-pub-1156879434770495~8658185965</string>
+</resources>

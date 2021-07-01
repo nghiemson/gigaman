@@ -1,0 +1,202 @@
+
+gigaman.pack.png
+size: 512, 128
+format: RGBA8888
+filter: Nearest, Nearest
+repeat: none
+Pause
+  rotate: false
+  xy: 398, 82
+  size: 40, 40
+  orig: 40, 40
+  offset: 0, 0
+  index: -1
+bullet
+  rotate: false
+  xy: 58, 5
+  size: 7, 5
+  orig: 7, 5
+  offset: 0, 0
+  index: -1
+button-jump
+  rotate: false
+  xy: 478, 90
+  size: 32, 32
+  orig: 32, 32
+  offset: 0, 0
+  index: -1
+button-move-left
+  rotate: false
+  xy: 478, 56
+  size: 32, 32
+  orig: 32, 32
+  offset: 0, 0
+  index: -1
+button-move-right
+  rotate: false
+  xy: 327, 24
+  size: 32, 32
+  orig: 32, 32
+  offset: 0, 0
+  index: -1
+button-shoot
+  rotate: false
+  xy: 361, 24
+  size: 32, 32
+  orig: 32, 32
+  offset: 0, 0
+  index: -1
+enemy
+  rotate: false
+  xy: 58, 12
+  size: 29, 44
+  orig: 29, 44
+  offset: 0, 0
+  index: -1
+exit-portal-1
+  rotate: false
+  xy: 2, 58
+  size: 64, 64
+  orig: 64, 64
+  offset: 0, 0
+  index: -1
+exit-portal-2
+  rotate: false
+  xy: 68, 58
+  size: 64, 64
+  orig: 64, 64
+  offset: 0, 0
+  index: -1
+exit-portal-3
+  rotate: false
+  xy: 134, 58
+  size: 64, 64
+  orig: 64, 64
+  offset: 0, 0
+  index: -1
+exit-portal-4
+  rotate: false
+  xy: 200, 58
+  size: 64, 64
+  orig: 64, 64
+  offset: 0, 0
+  index: -1
+exit-portal-5
+  rotate: false
+  xy: 266, 58
+  size: 64, 64
+  orig: 64, 64
+  offset: 0, 0
+  index: -1
+exit-portal-6
+  rotate: false
+  xy: 332, 58
+  size: 64, 64
+  orig: 64, 64
+  offset: 0, 0
+  index: -1
+explosion-large
+  rotate: false
+  xy: 440, 86
+  size: 36, 36
+  orig: 36, 36
+  offset: 0, 0
+  index: -1
+explosion-medium
+  rotate: false
+  xy: 89, 20
+  size: 36, 36
+  orig: 36, 36
+  offset: 0, 0
+  index: -1
+explosion-small
+  rotate: false
+  xy: 127, 20
+  size: 36, 36
+  orig: 36, 36
+  offset: 0, 0
+  index: -1
+jumping-left
+  rotate: false
+  xy: 398, 45
+  size: 29, 35
+  orig: 29, 35
+  offset: 0, 0
+  index: -1
+jumping-right
+  rotate: false
+  xy: 231, 21
+  size: 30, 35
+  orig: 30, 35
+  offset: 0, 0
+  index: -1
+platform
+  rotate: false
+  xy: 2, 2
+  size: 54, 54
+  orig: 54, 54
+  offset: 0, 0
+  index: -1
+powerup
+  rotate: false
+  xy: 459, 67
+  size: 15, 17
+  orig: 15, 17
+  offset: 0, 0
+  index: -1
+standing-left
+  rotate: false
+  xy: 429, 45
+  size: 28, 35
+  orig: 28, 35
+  offset: 0, 0
+  index: -1
+standing-right
+  rotate: false
+  xy: 165, 13
+  size: 31, 35
+  orig: 31, 35
+  offset: 0, 0
+  index: -1
+walk-left-1
+  rotate: false
+  xy: 425, 8
+  size: 27, 35
+  orig: 27, 35
+  offset: 0, 0
+  index: -1
+walk-left-2
+  rotate: false
+  xy: 454, 0
+  size: 25, 35
+  orig: 25, 35
+  offset: 0, 0
+  index: -1
+walk-left-3
+  rotate: false
+  xy: 395, 8
+  size: 28, 35
+  orig: 28, 35
+  offset: 0, 0
+  index: -1
+walk-right-1
+  rotate: false
+  xy: 263, 13
+  size: 30, 35
+  orig: 30, 35
+  offset: 0, 0
+  index: -1
+walk-right-2
+  rotate: false
+  xy: 295, 13
+  size: 30, 35
+  orig: 30, 35
+  offset: 0, 0
+  index: -1
+walk-right-3
+  rotate: false
+  xy: 198, 13
+  size: 31, 35
+  orig: 31, 35
+  offset: 0, 0
+  index: -1
