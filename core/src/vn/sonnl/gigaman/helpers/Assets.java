@@ -98,7 +98,7 @@ public class Assets {
 
     private static Animation createAnimation(TextureAtlas textureAtlas, String[] regionNames) {
 
-        Object[] runningFrames = new TextureRegion[regionNames.length];
+        TextureRegion[] runningFrames = new TextureRegion[regionNames.length];
 
         for (int i = 0; i < regionNames.length; i++) {
             String path = regionNames[i];

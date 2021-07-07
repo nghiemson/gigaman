@@ -81,15 +81,6 @@ public class DesktopLauncher {
 						return null;
 					}
 
-					@Override
-					public String get25kClubAchievementId() {
-						return null;
-					}
-
-					@Override
-					public String get50kClubAchievementId() {
-						return null;
-					}
 
 					@Override
 					public String get10JumpStreetAchievementId() {

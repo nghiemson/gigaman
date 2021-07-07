@@ -80,13 +80,6 @@ public class GameManager implements  GameEventListener{
             unlockAchievement(get10kClubAchievementId());
         }
 
-        if (score > 25000 && !isAchievementUnlocked(get25kClubAchievementId())) {
-            unlockAchievement(get25kClubAchievementId());
-        }
-
-        if (score > 50000 && !isAchievementUnlocked(get50kClubAchievementId())) {
-            unlockAchievement(get50kClubAchievementId());
-        }
     }
 
     private boolean isAchievementUnlocked(String id) {
@@ -146,16 +139,6 @@ public class GameManager implements  GameEventListener{
     @Override
     public String get10kClubAchievementId() {
         return gameEventListener.get10kClubAchievementId();
-    }
-
-    @Override
-    public String get25kClubAchievementId() {
-        return gameEventListener.get25kClubAchievementId();
-    }
-
-    @Override
-    public String get50kClubAchievementId() {
-        return gameEventListener.get50kClubAchievementId();
     }
 
     @Override

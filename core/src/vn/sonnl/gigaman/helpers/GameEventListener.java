@@ -86,16 +86,6 @@ package vn.sonnl.gigaman.helpers;
      String get10kClubAchievementId();
 
     /**
-     * @return "25k Club" achievement ID
-     */
-     String get25kClubAchievementId();
-
-    /**
-     * @return "50k Club" achievement ID
-     */
-     String get50kClubAchievementId();
-
-    /**
      * @return "10 Jump Street" achievement ID
      */
      String get10JumpStreetAchievementId();

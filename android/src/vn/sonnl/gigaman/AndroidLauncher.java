@@ -206,15 +206,6 @@ public class AndroidLauncher extends AndroidApplication implements GameEventList
 		return getString(R.string.achievement_10k_club);
 	}
 
-	@Override
-	public String get25kClubAchievementId() {
-		return getString(R.string.achievement_25k_club);
-	}
-
-	@Override
-	public String get50kClubAchievementId() {
-		return getString(R.string.achievement_50k_club);
-	}
 
 	@Override
 	public String get10JumpStreetAchievementId() {
