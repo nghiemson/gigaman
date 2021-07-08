@@ -107,34 +107,9 @@ class GameHelperUtils {
     }
 
     static void printMisconfiguredDebugInfo(Context ctx) {
-        Log.w("GameHelper", "****");
-        Log.w("GameHelper", "****");
-        Log.w("GameHelper", "**** APP NOT CORRECTLY CONFIGURED TO USE GOOGLE PLAY GAME SERVICES");
-        Log.w("GameHelper", "**** This is usually caused by one of these reasons:");
-        Log.w("GameHelper", "**** (1) Your package name and certificate fingerprint do not match");
-        Log.w("GameHelper", "****     the client ID you registered in Developer Console.");
-        Log.w("GameHelper", "**** (2) Your App ID was incorrectly entered.");
-        Log.w("GameHelper", "**** (3) Your game settings have not been published and you are ");
-        Log.w("GameHelper", "****     trying to log in with an account that is not listed as");
-        Log.w("GameHelper", "****     a test account.");
-        Log.w("GameHelper", "****");
         if (ctx == null) {
-            Log.w("GameHelper", "*** (no Context, so can't print more debug info)");
             return;
         }
-
-        Log.w("GameHelper", "**** To help you debug, here is the information about this app");
-        Log.w("GameHelper", "**** Package name         : " + ctx.getPackageName());
-        Log.w("GameHelper", "**** Cert SHA1 fingerprint: " + getSHA1CertFingerprint(ctx));
-        Log.w("GameHelper", "**** App ID from          : " + getAppIdFromResource(ctx));
-        Log.w("GameHelper", "****");
-        Log.w("GameHelper", "**** Check that the above information matches your setup in ");
-        Log.w("GameHelper", "**** Developer Console. Also, check that you're logging in with the");
-        Log.w("GameHelper", "**** right account (it should be listed in the Testers section if");
-        Log.w("GameHelper", "**** your project is not yet published).");
-        Log.w("GameHelper", "****");
-        Log.w("GameHelper", "**** For more information, refer to the troubleshooting guide:");
-        Log.w("GameHelper", "****   http://developers.google.com/games/services/android/troubleshooting");
     }
 
     static String getAppIdFromResource(Context ctx) {
@@ -192,10 +167,6 @@ class GameHelperUtils {
             return ctx.getString(resId);
         } catch (Exception ex) {
             ex.printStackTrace();
-            Log.w(GameHelper.TAG, "*** GameHelper could not found resource id #" + resId + ". " +
-                    "This probably happened because you included it as a stand-alone JAR. " +
-                    "BaseGameUtils should be compiled as a LIBRARY PROJECT, so that it can access " +
-                    "its resources. Using a fallback string.");
             return FALLBACK_STRINGS[whichString];
         }
     }

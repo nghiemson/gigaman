@@ -13,32 +13,26 @@ public class DesktopLauncher {
 				new GameEventListener() {
 					@Override
 					public void displayAd() {
-						Gdx.app.log(GameEventListener.class.getSimpleName(), "displayAd");
 					}
 
 					@Override
 					public void hideAd() {
-						Gdx.app.log(GameEventListener.class.getSimpleName(), "hideAd");
 					}
 
 					@Override
 					public void submitScore(int score) {
-						Gdx.app.log(GameEventListener.class.getSimpleName(), "submitScore");
 					}
 
 					@Override
 					public void displayLeaderboard() {
-						Gdx.app.log(GameEventListener.class.getSimpleName(), "displayLeaderboard");
 					}
 
 					@Override
 					public void displayAchievements() {
-						Gdx.app.log(GameEventListener.class.getSimpleName(), "displayAchievements");
 					}
 
 					@Override
 					public void share() {
-						Gdx.app.log(GameEventListener.class.getSimpleName(), "share");
 					}
 
 					@Override
