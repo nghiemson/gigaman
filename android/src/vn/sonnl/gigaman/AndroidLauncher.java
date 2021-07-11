@@ -178,7 +178,7 @@ public class AndroidLauncher extends AndroidApplication implements GameEventList
 
 	@Override
 	public String getGettingStartedAchievementId() {
-		return getString(R.string.achievement_getting_started);
+		return getString(R.string.achievement_get_started);
 	}
 
 	@Override

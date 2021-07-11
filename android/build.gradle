@@ -1,3 +1,6 @@
+def loadProperty(name) {
+    hasProperty(name) ? "${getProperty(name)}" : ""
+}
 android {
     buildToolsVersion "30.0.2"
     compileSdkVersion 30
@@ -34,6 +37,16 @@ android {
         versionName "1.0"
         multiDexEnabled true
     }
+
+    signingConfigs {
+        release {
+            storeFile file(loadProperty("C:\\Users\\anony\\keystores\\upload-keystores.jks") ?: signingConfigs.debug.storeFile)
+            storePassword loadProperty("Matkhau7") ?: signingConfigs.debug.storePassword
+            keyAlias loadProperty("key0") ?: signingConfigs.debug.keyAlias
+            keyPassword loadProperty("Matkhau7") ?: signingConfigs.debug.keyPassword
+        }
+    }
+
     buildTypes {
         release {
             minifyEnabled true
